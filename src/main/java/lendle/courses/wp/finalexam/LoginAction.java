@@ -6,11 +6,14 @@
 package lendle.courses.wp.finalexam;
 
 import java.io.IOException;
+import static java.lang.System.out;
+import java.sql.*;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import static lendle.courses.wp.finalexam.Logins.getUserData;
 
 /**
  *
@@ -36,7 +39,12 @@ public class LoginAction extends HttpServlet {
         //並轉址到 showNotes.jsp
         //否則轉址到 index.jsp
         //請使用外轉址 (30%)
-        
+        if(id!=null){
+            session.setAttribute("id",id);
+            response.sendRedirect("showNotes.jsp");
+        }else{
+            response.sendRedirect("index.jsp");
+        }
         ////////////////////////////////////////////////////
     }
 
